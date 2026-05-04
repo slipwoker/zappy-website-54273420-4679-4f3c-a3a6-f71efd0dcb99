@@ -3735,12 +3735,12 @@ html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
   gap: 24px;
 }
 
-/* 2x2 stat grid */
 .index-proof-section .index-proof-stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   direction: rtl;
+  width: 100%;
 }
 
 .index-proof-section .index-proof-stat-box {
