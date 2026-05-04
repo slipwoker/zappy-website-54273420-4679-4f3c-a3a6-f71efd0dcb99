@@ -40,7 +40,10 @@ Information about WCAG compliance and accessibility features.
 
 ## How to Contact Us
 
-- (No contact details configured yet.)
+- Email: shirazadik99@gmail.com
+- Phone: 0503737557
+- Phone (tel): tel:0503737557
+- Address: תוצרת הארץ 3, פתח תקווה, ישראל, ישראל
 
 ### Contact form
 - URL: https://example.com/contact
