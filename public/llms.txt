@@ -7,33 +7,33 @@
 ## Pages
 
 ### בית
-https://example.com
+https://hamumchit-leshivuk-umechira-is.zappy5.app
 עצור את הכאוס העסקי. אנחנו מהנדסים מנגנוני צמיחה מדויקים לעסקים קטנים שרוצים לשלוט בשוק. ייעוץ עסקי פרימיום שמביא תוצאות אמיתיות.
 
 ### שירותים
-https://example.com/services
+https://hamumchit-leshivuk-umechira-is.zappy5.app/services
 גלה שירותי ייעוץ עסקי מתקדמים שנבנו כמו אדריכלות מדויקת. מאסטרטגיית מכירות ועד ניהול משאבי אנוש — כל פתרון מותאם אישית לעסק שלך.
 
 ### אודות
-https://example.com/about
+https://hamumchit-leshivuk-umechira-is.zappy5.app/about
 הכר את המוח האסטרטגי שהפך עשרות עסקים מבלבול לבהירות. גישה ייחודית המשלבת חזון, מבנה ותוצאות — כי עסק מצליח נבנה, לא נולד.
 
 ### צור קשר
-https://example.com/contact
+https://hamumchit-leshivuk-umechira-is.zappy5.app/contact
 מוכן לבנות עסק על יסודות אמיתיים? צור קשר עוד היום עם יועץ עסקי מוביל ותקבל אסטרטגיה מותאמת שתוביל אותך לצמיחה מהירה ומדידה.
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://example.com/privacy
+https://hamumchit-leshivuk-umechira-is.zappy5.app/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://example.com/terms
+https://hamumchit-leshivuk-umechira-is.zappy5.app/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://example.com/accessibility
+https://hamumchit-leshivuk-umechira-is.zappy5.app/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
@@ -46,8 +46,8 @@ Information about WCAG compliance and accessibility features.
 - Address: תוצרת הארץ 3, פתח תקווה, ישראל, ישראל
 
 ### Contact form
-- URL: https://example.com/contact
-- Endpoint: https://example.com/api/email/contact-form
+- URL: https://hamumchit-leshivuk-umechira-is.zappy5.app/contact
+- Endpoint: https://hamumchit-leshivuk-umechira-is.zappy5.app/api/email/contact-form
 - Method: POST
 - Content-Type: application/json
 - Fields:
@@ -77,6 +77,6 @@ business consulting / growth strategy
 
 # Machine-readable feeds
 
-- Sitemap (XML): https://example.com/sitemap.xml
-- Robots: https://example.com/robots.txt
-- Flattened page text (for LLMs): https://example.com/llms-full.txt
+- Sitemap (XML): https://hamumchit-leshivuk-umechira-is.zappy5.app/sitemap.xml
+- Robots: https://hamumchit-leshivuk-umechira-is.zappy5.app/robots.txt
+- Flattened page text (for LLMs): https://hamumchit-leshivuk-umechira-is.zappy5.app/llms-full.txt
