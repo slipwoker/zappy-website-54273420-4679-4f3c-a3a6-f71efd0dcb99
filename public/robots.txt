@@ -50,4 +50,4 @@ Allow: /
 User-agent: MistralAI-User
 Allow: /
 
-Sitemap: https://hamumchit-leshivuk-umechira-is.zappy5.app/sitemap.xml
+Sitemap: https://shirazadik.co.il/sitemap.xml

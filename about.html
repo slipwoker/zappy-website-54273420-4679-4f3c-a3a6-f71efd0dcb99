@@ -223,6 +223,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="האדריכלית שמאחורי ההצלחה שלך — המומחית לשיווק ומכירה עיסקית יעילה">
     <meta name="twitter:description" content="הכר את המוח האסטרטגי שהפך עשרות עסקים מבלבול לבהירות. גישה ייחודית המשלבת חזון, מבנה ותוצאות — כי עסק מצליח נבנה, לא נולד.">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://shirazadik.co.il#organization","name":"המומחית לשיווק ומכירה עיסקית יעילה","url":"https://shirazadik.co.il","description":"האדריכלית (The Architect) is a premium Hebrew-language business consulting brand built around the metaphor of architectural construction — treating business growth as a structural engineering discipline. The brand exudes a dark, powerful, and elite aesthetic with gold accents symbolizing wealth and precision. It positions itself as the antidote to chaotic, foundationless businesses, offering 'growth mechanisms' as engineered systems rather than generic advice. The tone is bold, urgent, and authoritative, referencing thought leaders like Robert Kiyosaki to reinforce credibility and aspiration.","address":{"@type":"PostalAddress","streetAddress":"תוצרת הארץ 3, פתח תקווה, ישראל, ישראל"},"contactPoint":[{"@type":"ContactPoint","contactType":"customer service","email":"shirazadik99@gmail.com","telephone":"0503737557"}]},{"@type":"WebSite","@id":"https://shirazadik.co.il#website","url":"https://shirazadik.co.il","name":"המומחית לשיווק ומכירה עיסקית יעילה","publisher":{"@id":"https://shirazadik.co.il#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shirazadik.co.il"},{"@type":"ListItem","position":2,"name":"About","item":"https://shirazadik.co.il/about"}]}]}</script>
     <meta property="og:type" content="website">
   <meta property="og:locale" content="he_IL">
   
@@ -298,17 +299,37 @@
     </style>
 
     <style id="zappy-widget-visibility">
+      html[dir="rtl"] .whatsapp-float { right: 20px !important; left: auto !important; }
+      html[dir="ltr"] .whatsapp-float, html:not([dir]) .whatsapp-float { left: 20px !important; right: auto !important; }
+      html[dir="rtl"] #mic-access-tool-general-button, html[dir="rtl"] .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="rtl"] ._access-icon { left: 20px !important; right: auto !important; }
+      html[dir="ltr"] #mic-access-tool-general-button, html[dir="ltr"] .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="ltr"] ._access-icon,
+      html:not([dir]) #mic-access-tool-general-button, html:not([dir]) .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool #mic-access-tool-general-button,
+      html:not([dir]) ._access-icon { right: 20px !important; left: auto !important; }
       @media (max-width: 768px) { .whatsapp-float { display: flex !important; } }
       @media (min-width: 769px) { .whatsapp-float { display: flex !important; } }
       @media (max-width: 768px) {
         #mic-access-tool-general-button, .mic-access-tool-general-button,
         #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
-        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        ._access-icon, #mic-access-tool-box, .mic-access-tool-box,
+        #mic-init-access-tool #mic-access-tool-box, div[id*="mic-access-tool-box"], ._access-menu {
+          display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important;
+        }
       }
       @media (min-width: 769px) {
         #mic-access-tool-general-button, .mic-access-tool-general-button,
         #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
-        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        ._access-icon, #mic-access-tool-box, .mic-access-tool-box,
+        #mic-init-access-tool #mic-access-tool-box, div[id*="mic-access-tool-box"], ._access-menu {
+          display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important;
+        }
       }
     </style>
 </head>
