@@ -8904,6 +8904,396 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', sans-serif; font-wei
 body { font-family: 'Josefin Sans', sans-serif; font-weight: 300; }
 h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', sans-serif; font-weight: 600; }
 
+
+/* AI-generated section */
+/* =====================================================
+   LUX HERO — Ultra-Premium Typographic Hero Section
+   RTL Hebrew | Dark Luxury Aesthetic
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Josefin+Sans:wght@100;200;300;400&display=swap');
+
+/* --- Section Base --- */
+.lux-hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #0A0A0A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  direction: rtl;
+  text-align: center;
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  overflow: hidden;
+  padding: 80px 24px 60px;
+  box-sizing: border-box;
+}
+
+/* --- Noise texture overlay --- */
+.lux-hero__noise {
+  position: absolute;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Radial glow --- */
+.lux-hero__glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Container --- */
+.lux-hero__container {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* --- Eyebrow --- */
+.lux-hero__eyebrow-wrap {
+  margin-bottom: 28px;
+}
+
+.lux-hero__eyebrow {
+  display: inline-block;
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #8A8A8A;
+  border: 1px solid rgba(200, 200, 200, 0.18);
+  padding: 7px 20px;
+  background: rgba(200, 200, 200, 0.04);
+}
+
+/* --- Top Decorative Divider --- */
+.lux-hero__divider-top {
+  width: 100%;
+  max-width: 560px;
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    transparent 0%,
+    rgba(200, 200, 200, 0.08) 10%,
+    rgba(200, 200, 200, 0.35) 50%,
+    rgba(200, 200, 200, 0.08) 90%,
+    transparent 100%
+  );
+  margin-bottom: 40px;
+}
+
+/* --- Header / Headline --- */
+.lux-hero__header {
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.lux-hero__headline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 400;
+  line-height: 1.18;
+  color: #E8E8E8;
+  margin: 0 0 32px 0;
+  padding: 0;
+  letter-spacing: -0.01em;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+.lux-hero__headline-line {
+  display: block;
+}
+
+.lux-hero__headline-line--1 {
+  font-style: italic;
+  font-weight: 300;
+  color: #C8C8C8;
+}
+
+.lux-hero__headline-line--2 {
+  font-weight: 400;
+  color: #E8E8E8;
+  font-size: clamp(40px, 5.5vw, 66px);
+}
+
+.lux-hero__headline-line--3 {
+  font-weight: 500;
+}
+
+.lux-hero__headline-gold {
+  color: #C9A84C;
+  font-style: italic;
+  font-size: clamp(52px, 7.5vw, 86px);
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 0 60px rgba(201, 168, 76, 0.25),
+    0 0 120px rgba(201, 168, 76, 0.10);
+}
+
+/* --- Subheadline --- */
+.lux-hero__subheadline {
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-size: clamp(14px, 1.8vw, 17px);
+  font-weight: 200;
+  line-height: 1.85;
+  color: #9A9A9A;
+  max-width: 600px;
+  margin: 0 auto 44px auto;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.lux-hero__br-desktop {
+  display: block;
+}
+
+/* --- CTA Group --- */
+.lux-hero__cta-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+/* Primary Button */
+.lux-hero__btn-primary {
+  display: inline-block;
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #0A0A0A;
+  background-color: #C9A84C;
+  padding: 16px 40px;
+  border: 1px solid #C9A84C;
+  border-radius: 0;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.lux-hero__btn-primary:hover,
+.lux-hero__btn-primary:focus {
+  background-color: transparent;
+  color: #C9A84C;
+  border-color: #C9A84C;
+  box-shadow: 0 0 24px rgba(201, 168, 76, 0.2);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.lux-hero__btn-primary:focus-visible {
+  outline: 2px solid #C9A84C;
+  outline-offset: 3px;
+}
+
+/* Secondary Ghost Link */
+.lux-hero__btn-secondary {
+  display: inline-block;
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: #8A8A8A;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  cursor: pointer;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.lux-hero__btn-secondary:hover,
+.lux-hero__btn-secondary:focus {
+  color: #C8C8C8;
+  border-bottom-color: rgba(200, 200, 200, 0.45);
+  transform: translateX(-3px);
+  outline: none;
+}
+
+.lux-hero__btn-secondary:focus-visible {
+  outline: 2px solid #C8C8C8;
+  outline-offset: 3px;
+}
+
+/* --- Fine Print --- */
+.lux-hero__fine-print {
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: #4A4A4A;
+  text-align: center;
+  margin: 0 0 36px 0;
+  line-height: 1.6;
+}
+
+/* --- Bottom Hairline Divider --- */
+.lux-hero__divider-bottom {
+  width: 100%;
+  max-width: 560px;
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    transparent 0%,
+    rgba(200, 200, 200, 0.05) 10%,
+    rgba(200, 200, 200, 0.18) 50%,
+    rgba(200, 200, 200, 0.05) 90%,
+    transparent 100%
+  );
+}
+
+/* =====================================================
+   RESPONSIVE — TABLET
+   ===================================================== */
+@media (max-width: 900px) {
+  .lux-hero {
+    padding: 70px 32px 56px;
+  }
+
+  .lux-hero__glow {
+    width: 500px;
+    height: 380px;
+  }
+
+  .lux-hero__subheadline {
+    max-width: 90%;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE — MOBILE
+   ===================================================== */
+@media (max-width: 600px) {
+  .lux-hero {
+    padding: 60px 20px 48px;
+    align-items: flex-start;
+    padding-top: 100px;
+  }
+
+  .lux-hero__container {
+    gap: 0;
+  }
+
+  .lux-hero__eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    padding: 6px 16px;
+  }
+
+  .lux-hero__eyebrow-wrap {
+    margin-bottom: 22px;
+  }
+
+  .lux-hero__divider-top {
+    margin-bottom: 28px;
+    max-width: 90%;
+  }
+
+  .lux-hero__headline {
+    font-size: clamp(38px, 10vw, 56px);
+    gap: 2px;
+    margin-bottom: 24px;
+  }
+
+  .lux-hero__headline-line--2 {
+    font-size: clamp(30px, 8vw, 44px);
+  }
+
+  .lux-hero__headline-gold {
+    font-size: clamp(42px, 11vw, 60px);
+  }
+
+  .lux-hero__subheadline {
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    margin-bottom: 36px;
+    max-width: 100%;
+  }
+
+  .lux-hero__br-desktop {
+    display: none;
+  }
+
+  .lux-hero__cta-group {
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .lux-hero__btn-primary {
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    padding: 15px 32px;
+  }
+
+  .lux-hero__btn-secondary {
+    font-size: 11px;
+  }
+
+  .lux-hero__fine-print {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    margin-bottom: 28px;
+  }
+
+  .lux-hero__divider-bottom {
+    max-width: 90%;
+  }
+
+  .lux-hero__glow {
+    width: 320px;
+    height: 260px;
+    top: 25%;
+  }
+}
+
+/* =====================================================
+   REDUCED MOTION ACCESSIBILITY
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .lux-hero__btn-primary,
+  .lux-hero__btn-secondary {
+    transition: none;
+  }
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
