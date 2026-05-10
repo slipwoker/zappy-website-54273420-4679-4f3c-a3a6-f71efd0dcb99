@@ -10027,6 +10027,91 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', sans-serif; font-wei
     padding: 0 16px;
   }
 }
+
+.index-cta-section {
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+.index-pain-points-section .pain-points-container {
+  max-width: 1200px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  box-sizing: border-box !important;
+}
+
+.index-methodology-section .index-methodology-container {
+  max-width: 1200px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  box-sizing: border-box !important;
+}
+
+.index-cta-section .index-cta-container {
+  max-width: 1200px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  box-sizing: border-box !important;
+}
+
+.index-pain-points-section {
+  padding-top: 96px !important;
+  padding-bottom: 96px !important;
+}
+
+.index-methodology-section {
+  padding-top: 96px !important;
+  padding-bottom: 96px !important;
+}
+
+.index-pain-points-section .pain-points-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+}
+
+.index-methodology-section .index-methodology-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+}
+
+#ai-section-1778166834997-8wlx7xk .wq-hero-container {
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  box-sizing: border-box !important;
+}
+
+#ai-section-1778166834997-8wlx7xk .mech-pillars {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+}
+
+#index-pain-points-section .pain-card {
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#index-methodology-section .index-methodology-card {
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#ai-section-1778166834997-8wlx7xk .mech-card {
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
