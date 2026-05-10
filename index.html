@@ -1188,54 +1188,473 @@
 
 
 
-<section class="lux-hero" aria-label="אזור פתיחה ראשי" id="lux-hero" style="position: relative; overflow: hidden; background-image: linear-gradient(rgba(77, 51, 51, 0.41), rgba(77, 51, 51, 0.41)), url(&quot;assets/general-hero-upload-1778412192480.webp&quot;); background-size: cover; background-position: center; background-repeat: no-repeat; --zappy-bg-overlay: rgba(77, 51, 51, 0.41); --zappy-bg-image: url(&quot;assets/general-hero-upload-1778412192480.webp&quot;)" data-zappy-content-align="upper-mid-right" data-zappy-bg-type="image" data-zappy-bg-color="" data-zappy-bg-image="assets/general-hero-upload-1778412192480.webp" data-zappy-bg-overlay-color="#4d3333" data-zappy-bg-overlay-opacity="41" data-zappy-bg-video-type="" data-zappy-bg-video-url="" data-hero-type="fullscreen-scrim">
-  <!-- Noise texture overlay -->
-  <div class="lux-hero__noise" aria-hidden="true"></div>
+<section style="width:100%;max-width:100%;box-sizing:border-box;position:relative;min-height:100vh;background:var(--bg-dark);overflow:hidden;direction:rtl;" id="lux-hero" data-zappy-section="true" class="section">
+<style>
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes floatUp {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes pulseGlow {
+    0%,100% { box-shadow: 0 0 20px rgba(201,168,76,0.2), 0 0 60px rgba(201,168,76,0.05); }
+    50% { box-shadow: 0 0 40px rgba(201,168,76,0.4), 0 0 100px rgba(201,168,76,0.15); }
+  }
+  @keyframes lineGrow {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes rotateGrid {
+    0% { transform: rotate(0deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1.2); }
+  }
+  @keyframes scanline {
+    0% { top: -10%; }
+    100% { top: 110%; }
+  }
 
-  <!-- Radial glow accent -->
-  <div class="lux-hero__glow" aria-hidden="true"></div>
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
 
-  <div class="lux-hero__container" data-zappy-align-target="true" >
+  .hero-bg-radial {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(ellipse 80% 70% at 30% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 50% at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 60%),
+                linear-gradient(180deg, #050505 0%, #0A0A0A 50%, #050505 100%);
+  }
 
-    <!-- Eyebrow label -->
-    <div class="lux-hero__eyebrow-wrap" aria-label="מידע נוסף">
-      <span class="lux-hero__eyebrow">אבחון עסקי מדויק · שיווק ממוקד · מכירות שצומחות · תוצאות בחשבון הבנק</span>
+  .hero-scanline {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.15) 50%, transparent 100%);
+    z-index: 2;
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+  }
+
+  .hero-vertical-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, rgba(201,168,76,0.3) 30%, rgba(201,168,76,0.5) 50%, rgba(201,168,76,0.3) 70%, transparent 100%);
+    z-index: 2;
+    animation: floatUp 6s ease-in-out infinite;
+  }
+
+  .hero-content-wrap {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+    box-sizing: border-box;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+  }
+
+  .hero-eyebrow-line {
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--accent);
+    animation: lineGrow 1s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  .hero-eyebrow-text {
+    font-family: system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .hero-tags-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 0;
+    margin-top: 4px;
+  }
+
+  .hero-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent);
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 4px 12px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .hero-headline-block {
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.25s;
+    opacity: 0;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .hero-h1 {
+    font-family: system-ui, sans-serif;
+    font-size: clamp(32px, 5.5vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text-light);
+    margin: 0 0 8px 0;
+    letter-spacing: -1px;
+  }
+
+  .hero-h1 .accent-word {
+    background: var(--gradient-gold-shine);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+    display: inline;
+  }
+
+  .hero-h1-sub {
+    font-family: system-ui, sans-serif;
+    font-size: clamp(28px, 4.5vw, 60px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--text-light);
+    margin: 0;
+    letter-spacing: -1px;
+  }
+
+  .hero-divider-accent {
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    margin: 28px 0;
+    position: relative;
+  }
+  .hero-divider-accent::after {
+    content: '';
+    position: absolute;
+    right: 90px;
+    top: 0;
+    width: 20px;
+    height: 3px;
+    background: rgba(201,168,76,0.3);
+  }
+
+  .hero-body-text {
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+    margin-bottom: 48px;
+  }
+
+  .hero-paragraph {
+    font-family: system-ui, sans-serif;
+    font-size: clamp(15px, 1.8vw, 18px);
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin: 0 0 20px 0;
+    max-width: 680px;
+  }
+
+  .hero-notice {
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: inline-block;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .hero-cta-row {
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.55s;
+    opacity: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn-primary-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 36px;
+    background: var(--accent);
+    color: #050505;
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: var(--radius-btn);
+    transition: var(--transition-default);
+    animation: pulseGlow 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s ease;
+  }
+  .btn-primary-hero:hover::before {
+    left: 100%;
+  }
+  .btn-primary-hero:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.4);
+  }
+
+  .btn-secondary-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 32px;
+    background: transparent;
+    color: var(--text-light);
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(232,232,232,0.2);
+    border-radius: var(--radius-btn);
+    transition: var(--transition-default);
+    letter-spacing: 0.3px;
+  }
+  .btn-secondary-hero:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .hero-side-decoration {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 5;
+    opacity: 0.5;
+  }
+
+  .hero-side-num {
+    font-family: system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .hero-side-line-vert {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+  }
+
+  .hero-corner-accent {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(201,168,76,0.2);
+    z-index: 3;
+    pointer-events: none;
+  }
+  .hero-corner-accent.top-right {
+    top: 80px;
+    left: 60px;
+    border-bottom: none;
+    border-left: none;
+  }
+  .hero-corner-accent.bottom-left {
+    bottom: 60px;
+    right: 60px;
+    border-top: none;
+    border-right: none;
+  }
+
+  .hero-floating-badge {
+    position: absolute;
+    left: 80px;
+    bottom: 120px;
+    background: rgba(10,10,10,0.9);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 16px 20px;
+    border-radius: var(--radius-card);
+    z-index: 10;
+    animation: floatUp 5s ease-in-out infinite;
+    backdrop-filter: blur(10px);
+  }
+  .hero-floating-badge .badge-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    font-family: system-ui, sans-serif;
+  }
+  .hero-floating-badge .badge-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-top: 4px;
+    font-family: system-ui, sans-serif;
+  }
+
+  @media (max-width: 900px) {
+    .hero-side-decoration { display: none; }
+    .hero-corner-accent { display: none; }
+    .hero-floating-badge { display: none; }
+    .hero-vertical-line { display: none; }
+  }
+  @media (max-width: 768px) {
+    .hero-content-wrap {
+      padding-top: 110px;
+      padding-bottom: 60px;
+      align-items: flex-start;
+    }
+    .hero-paragraph { max-width: 100%; }
+    .hero-notice { max-width: 100%; }
+    .hero-cta-row { flex-direction: column; align-items: flex-start; }
+    .btn-primary-hero, .btn-secondary-hero { width: 100%; justify-content: center; }
+  }
+</style>
+
+<!-- Background layers -->
+<div class="hero-bg-grid"></div>
+<div class="hero-bg-radial"></div>
+<div class="hero-scanline"></div>
+
+<!-- Vertical decorative lines -->
+<div class="hero-vertical-line" style="right: 22%; animation-delay: 0s;"></div>
+<div class="hero-vertical-line" style="right: 65%; animation-delay: 2s; opacity: 0.4;"></div>
+
+<!-- Corner accents -->
+<div class="hero-corner-accent top-right"></div>
+<div class="hero-corner-accent bottom-left"></div>
+
+<!-- Side decoration -->
+<div class="hero-side-decoration">
+  <div class="hero-side-num">LEADS · SALES · GROWTH</div>
+  <div class="hero-side-line-vert"></div>
+</div>
+
+<!-- Floating badge -->
+<div class="hero-floating-badge">
+  <div class="badge-num">100%</div>
+  <div class="badge-label">תוצאות אמיתיות</div>
+</div>
+
+<!-- Main content -->
+<div class="hero-content-wrap">
+  <div class="hero-inner">
+
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">המומחית לשיווק ומכירה</span>
     </div>
 
-    <!-- Platinum decorative line -->
-    <div class="lux-hero__divider-top" aria-hidden="true"></div>
-
-    <!-- Main headline -->
-    <header class="lux-hero__header">
-      <h1 class="lux-hero__headline">
-<span class="lux-hero__headline-line lux-hero__headline-line--1">אם את/ה בעל/ת עסק. יזם. נותן שירות.</span>
-<span class="lux-hero__headline-line lux-hero__headline-line--2">יש לך מוצר או שירות טוב —</span>
-<span class="lux-hero__headline-line lux-hero__headline-line--3 lux-hero__headline-gold">אנו נקפיץ לך לידים ומכירות.</span>
-</h1>
-    </header>
-
-    <!-- Subheadline -->
-    <p class="lux-hero__subheadline" >נקפיץ לכם את כמות הלידים האיכותיים והמכירות תוך תקופה קצרה — בתהליך אמיתי של הכרת העסק שלכם, איבחון מדויק של נקודות החולשה במיתוג, שיווק, מכירה, ובניית מנגנון הגבייה המדויק.<br class="lux-hero__br-desktop"> מחפשים יותר לידים... למכור יותר... לאורך זמן? — <strong>תראו את התוצאות כבר בחשבון הבנק.</strong></p>
-
-    <!-- CTA group -->
-    <div class="lux-hero__cta-group" role="group" aria-label="כפתורי פעולה">
-      <a href="#contact" class="lux-hero__btn-primary" aria-label="קבעו שיחת הערכה" data-element-type="button" data-element-id="btn-1778409638028-cky3hu7br" data-native-element="true">
-        קבעו שיחת הערכה
-      </a>
-      <a href="#about" class="lux-hero__btn-secondary" aria-label="למי זה מתאים" data-element-type="button" data-element-id="btn-1778409638028-q36rtljsf" data-native-element="true">
-        למי זה מתאים ←
-      </a>
+    <div class="hero-headline-block">
+      <h1 class="hero-h1">
+        אם את/ה בעל/ת עסק. יזם. נותן שירות.<br>
+        יש לך מוצר או שירות טוב —
+      </h1>
+      <p class="hero-h1-sub">
+        אנו נקפיץ לך <span class="accent-word">לידים ומכירות.</span>
+      </p>
+      <div class="hero-divider-accent"></div>
     </div>
 
-    <!-- Fine print -->
-    <p class="lux-hero__fine-print" style="color: rgb(245, 245, 245) !important;">
-      מקבלים לקוחות חדשים — בררנית.&nbsp;&nbsp;|&nbsp;&nbsp;פגישת ייעוץ ראשונה: ללא עלות.
-    </p>
+    <div class="hero-body-text">
+      <p class="hero-paragraph">
+        נקפיץ לכם את כמות הלידים האיכותיים והמכירות תוך תקופה קצרה — בתהליך אמיתי של הכרת העסק שלכם, איבחון מדויק של נקודות החולשה במיתוג, שיווק, מכירה, ובניית מנגנון הגבייה המדויק. מחפשים יותר לידים... למכור יותר... לאורך זמן? — תראו את התוצאות כבר בחשבון הבנק.
+      </p>
+      <div class="hero-notice">
+        מקבלים לקוחות חדשים — בררנית.&nbsp;&nbsp;|&nbsp;&nbsp;פגישת ייעוץ ראשונה: ללא עלות.
+      </div>
+    </div>
 
-    <!-- Bottom hairline divider -->
-    <div class="lux-hero__divider-bottom" aria-hidden="true"></div>
+    <div class="hero-cta-row">
+      <a href="#contact" class="btn-primary-hero">קבעו שיחת הערכה</a>
+      <a href="#about" class="btn-secondary-hero">למי זה מתאים ←</a>
+    </div>
+
+    <div style="margin-top:40px;animation:fadeSlideIn 0.8s ease forwards;animation-delay:0.7s;opacity:0;">
+      <div class="hero-tags-strip">
+        <span class="hero-tag">אבחון עסקי מדויק</span>
+        <span class="hero-tag">שיווק ממוקד</span>
+        <span class="hero-tag">מכירות שצומחות</span>
+        <span class="hero-tag">תוצאות בחשבון הבנק</span>
+      </div>
+    </div>
 
   </div>
+</div>
+
+<!-- Bottom divider -->
+<div style="position:absolute;bottom:0;left:0;width:100%;height:60px;pointer-events:none;z-index:5;">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" style="display:block;width:100%;height:100%;">
+    <path d="M0,60 L0,30 Q300,0 600,20 Q900,40 1200,10 L1200,60 Z" fill="#050505"></path>
+  </svg>
+</div>
+
 </section><section class="index-pain-points-section" dir="rtl" data-layout-spec="בית-pain-points" id="index-pain-points-section">
   <div class="pain-points-container">
 
