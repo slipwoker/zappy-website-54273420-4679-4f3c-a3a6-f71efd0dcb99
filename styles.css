@@ -10173,6 +10173,11 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', sans-serif; font-wei
   }
 }
 
+
+#lux-hero .hero-bg-radial {
+  background: radial-gradient(ellipse 80% 70% at 30% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 50% at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 60%) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
