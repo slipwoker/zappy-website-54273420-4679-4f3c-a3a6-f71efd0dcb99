@@ -1188,7 +1188,1053 @@
 
 
 
-<section class="index-pain-points-section" dir="rtl" data-layout-spec="בית-pain-points" id="index-pain-points-section">
+<section style="width: 100%; max-width: 100%; box-sizing: border-box; position: relative; min-height: 100vh; overflow: hidden; direction: rtl; --zappy-bg-overlay: rgba(0, 0, 0, 0.22); --zappy-bg-image: url(&quot;assets/general-hero-upload-1778500102106.webp&quot;); background-repeat: no-repeat; --zappy-bg-color: #1C1C1A; background-image: url(&quot;assets/general-hero-upload-1778580677147-h8ugih.webp?v=1778580679707&quot;) !important; background-size: cover !important; background-position: 90% 0% !important;" id="lux-hero" data-zappy-section="true" class="section" data-zappy-bg-color="#1C1C1A" data-zappy-bg-image="assets/general-hero-upload-1778500102106.webp" data-zappy-bg-overlay-color="#000000" data-zappy-bg-overlay-opacity="22" data-zappy-bg-video-type="" data-zappy-bg-video-url="" data-element-id="zappy-hero-bg-lux-hero" data-element-type="background-image" data-zappy-bg-position="90% 0%" data-zappy-bg-zoom="0.7" data-zappy-bg-type="image">
+<style>
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes floatUp {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes pulseGlow {
+    0%,100% { box-shadow: 0 0 20px rgba(201,168,76,0.2), 0 0 60px rgba(201,168,76,0.05); }
+    50% { box-shadow: 0 0 40px rgba(201,168,76,0.4), 0 0 100px rgba(201,168,76,0.15); }
+  }
+  @keyframes lineGrow {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes rotateGrid {
+    0% { transform: rotate(0deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1.2); }
+  }
+  @keyframes scanline {
+    0% { top: -10%; }
+    100% { top: 110%; }
+  }
+
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-bg-radial {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(ellipse 80% 70% at 30% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 50% at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 60%),
+                linear-gradient(180deg, #050505 0%, #0A0A0A 50%, #050505 100%);
+  }
+
+  .hero-scanline {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.15) 50%, transparent 100%);
+    z-index: 2;
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+  }
+
+  .hero-vertical-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, rgba(201,168,76,0.3) 30%, rgba(201,168,76,0.5) 50%, rgba(201,168,76,0.3) 70%, transparent 100%);
+    z-index: 2;
+    animation: floatUp 6s ease-in-out infinite;
+  }
+
+  .hero-content-wrap {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+    box-sizing: border-box;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+  }
+
+  .hero-eyebrow-line {
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--accent);
+    animation: lineGrow 1s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  .hero-eyebrow-text {
+    font-family: system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .hero-tags-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 0;
+    margin-top: 4px;
+  }
+
+  .hero-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent);
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 4px 12px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .hero-headline-block {
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.25s;
+    opacity: 0;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .hero-h1 {
+    font-family: system-ui, sans-serif;
+    font-size: clamp(32px, 5.5vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text-light);
+    margin: 0 0 8px 0;
+    letter-spacing: -1px;
+  }
+
+  .hero-h1 .accent-word {
+    background: var(--gradient-gold-shine);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+    display: inline;
+  }
+
+  .hero-h1-sub {
+    font-family: system-ui, sans-serif;
+    font-size: clamp(28px, 4.5vw, 60px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--text-light);
+    margin: 0;
+    letter-spacing: -1px;
+  }
+
+  .hero-divider-accent {
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    margin: 28px 0;
+    position: relative;
+  }
+  .hero-divider-accent::after {
+    content: '';
+    position: absolute;
+    right: 90px;
+    top: 0;
+    width: 20px;
+    height: 3px;
+    background: rgba(201,168,76,0.3);
+  }
+
+  .hero-body-text {
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+    margin-bottom: 48px;
+  }
+
+  .hero-paragraph {
+    font-family: system-ui, sans-serif;
+    font-size: clamp(15px, 1.8vw, 18px);
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin: 0 0 20px 0;
+    max-width: 680px;
+  }
+
+  .hero-notice {
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: inline-block;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .hero-cta-row {
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.55s;
+    opacity: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn-primary-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 36px;
+    background: var(--accent);
+    color: #050505;
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: var(--radius-btn);
+    transition: var(--transition-default);
+    animation: pulseGlow 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s ease;
+  }
+  .btn-primary-hero:hover::before {
+    left: 100%;
+  }
+  .btn-primary-hero:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.4);
+  }
+
+  .btn-secondary-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 32px;
+    background: transparent;
+    color: var(--text-light);
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(232,232,232,0.2);
+    border-radius: var(--radius-btn);
+    transition: var(--transition-default);
+    letter-spacing: 0.3px;
+  }
+  .btn-secondary-hero:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .hero-side-decoration {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 5;
+    opacity: 0.5;
+  }
+
+  .hero-side-num {
+    font-family: system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .hero-side-line-vert {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+  }
+
+  .hero-corner-accent {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(201,168,76,0.2);
+    z-index: 3;
+    pointer-events: none;
+  }
+  .hero-corner-accent.top-right {
+    top: 80px;
+    left: 60px;
+    border-bottom: none;
+    border-left: none;
+  }
+  .hero-corner-accent.bottom-left {
+    bottom: 60px;
+    right: 60px;
+    border-top: none;
+    border-right: none;
+  }
+
+  .hero-floating-badge {
+    position: absolute;
+    left: 80px;
+    bottom: 120px;
+    background: rgba(10,10,10,0.9);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 16px 20px;
+    border-radius: var(--radius-card);
+    z-index: 10;
+    animation: floatUp 5s ease-in-out infinite;
+    backdrop-filter: blur(10px);
+  }
+  .hero-floating-badge .badge-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    font-family: system-ui, sans-serif;
+  }
+  .hero-floating-badge .badge-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-top: 4px;
+    font-family: system-ui, sans-serif;
+  }
+
+  @media (max-width: 900px) {
+    .hero-side-decoration { display: none; }
+    .hero-corner-accent { display: none; }
+    .hero-floating-badge { display: none; }
+    .hero-vertical-line { display: none; }
+  }
+  @media (max-width: 768px) {
+    .hero-content-wrap {
+      padding-top: 110px;
+      padding-bottom: 60px;
+      align-items: flex-start;
+    }
+    .hero-paragraph { max-width: 100%; }
+    .hero-notice { max-width: 100%; }
+    .hero-cta-row { flex-direction: column; align-items: flex-start; }
+    .btn-primary-hero, .btn-secondary-hero { width: 100%; justify-content: center; }
+  }
+</style>
+
+<!-- Background layers -->
+<div class="hero-bg-grid"></div>
+<div class="hero-bg-radial"></div>
+<div class="hero-scanline"></div>
+
+<!-- Vertical decorative lines -->
+<div class="hero-vertical-line" style="right: 22%; animation-delay: 0s;"></div>
+<div class="hero-vertical-line" style="right: 65%; animation-delay: 2s; opacity: 0.4;"></div>
+
+<!-- Corner accents -->
+<div class="hero-corner-accent top-right"></div>
+<div class="hero-corner-accent bottom-left"></div>
+
+<!-- Side decoration -->
+<div class="hero-side-decoration">
+  <div class="hero-side-num">LEADS · SALES · GROWTH</div>
+  <div class="hero-side-line-vert"></div>
+</div>
+
+<!-- Floating badge -->
+<div class="hero-floating-badge">
+  <div class="badge-num">100%</div>
+  <div class="badge-label">תוצאות אמיתיות</div>
+</div>
+
+<!-- Main content -->
+<style>
+  .hero-sbs-wrap {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 48px 80px;
+    box-sizing: border-box;
+  }
+  .hero-sbs-inner {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-sbs-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .hero-sbs-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-sbs-image-frame {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+  }
+  .hero-sbs-image-frame::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 4px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-sbs-image-frame img {
+    width: 100%;
+    max-width: 480px;
+    height: 620px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 4px;
+    display: block;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  }
+  .hero-sbs-badge {
+    position: absolute;
+    bottom: 24px;
+    left: -20px;
+    background: rgba(10,10,10,0.92);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 14px 20px;
+    border-radius: 4px;
+    z-index: 5;
+    backdrop-filter: blur(10px);
+    animation: floatUp 5s ease-in-out infinite;
+  }
+  .hero-sbs-badge .sbs-badge-num {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    font-family: system-ui, sans-serif;
+    display: block;
+  }
+  .hero-sbs-badge .sbs-badge-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-top: 4px;
+    font-family: system-ui, sans-serif;
+    display: block;
+  }
+  @media (max-width: 900px) {
+    .hero-sbs-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-sbs-image {
+      order: -1;
+    }
+    .hero-sbs-image-frame img {
+      height: 420px;
+      max-width: 100%;
+    }
+    .hero-sbs-wrap {
+      padding: 100px 24px 60px;
+    }
+    .hero-sbs-badge {
+      left: 10px;
+      bottom: 16px;
+    }
+  }
+</style>
+<div class="hero-sbs-wrap">
+  <div class="hero-sbs-inner">
+
+    <!-- Text Column -->
+    <div class="hero-sbs-text">
+      <div class="hero-eyebrow" style="margin-bottom:24px;">
+        <div class="hero-eyebrow-line"></div>
+        <span class="hero-eyebrow-text">המומחית לשיווק ומכירה</span>
+      </div>
+
+      <div class="hero-headline-block">
+        <h1 class="hero-h1" style="font-size:clamp(26px,3.8vw,52px);">
+          <font color="#ffffff">אם את/ה בעל/ת עסק. יזם. נותן שירות.<br>יש לך מוצר או שירות טוב —</font>
+        </h1>
+        <div class="hero-divider-accent"></div>
+      </div>
+
+      <div class="hero-body-text">
+        <h3><b><font color="#ffffff">נקפיץ לכם את כמות הלידים האיכותיים והמכירות תוך תקופה קצרה — בתהליך אמיתי של הכרת העסק שלכם, איבחון מדויק של נקודות החולשה במיתוג, שיווק, מכירה, ובניית מנגנון הגבייה המדויק. מחפשים יותר לידים... למכור יותר... לאורך זמן? — תראו את התוצאות כבר בחשבון הבנק.</font></b></h3>
+        <div class="hero-notice">
+          <h2><font color="#ffffff">אני מזמינה אותך לשיחת היכרות<br>בה נבחן יחד כיצד אני יכולה ל-לוות אותך להגשים את המטרות שלך</font></h2>
+        </div>
+      </div>
+
+      <div class="hero-cta-row" style="margin-top:8px;">
+        <a href="#contact" class="btn-primary-hero" data-element-type="button" data-element-id="btn-1778418124144-y39uaeql5" data-native-element="true">קבעו שיחת הערכה</a>
+        <a href="#about" class="btn-secondary-hero" data-element-type="button" data-element-id="btn-1778418124144-4bgxdgy4h" data-native-element="true">למי זה מתאים ←</a>
+      </div>
+
+      <div style="margin-top:32px;">
+        <div class="hero-tags-strip">
+          <span class="hero-tag">אבחון עסקי מדויק</span>
+          <span class="hero-tag">שיווק ממוקד</span>
+          <span class="hero-tag">מכירות שצומחות</span>
+          <span class="hero-tag">תוצאות בחשבון הבנק</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Column (right side in RTL) -->
+    <div class="hero-sbs-image">
+      <div class="hero-sbs-image-frame">
+        <img src="/assets/shira.jpg" alt="המומחית לשיווק ומכירה — שירז אדיק">
+        <div class="hero-sbs-badge">
+          <span class="sbs-badge-num">100%</span>
+          <span class="sbs-badge-label">תוצאות אמיתיות</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Bottom divider -->
+<div style="position:absolute;bottom:0;left:0;width:100%;height:60px;pointer-events:none;z-index:5;">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" style="display:block;width:100%;height:100%;">
+    <path d="M0,60 L0,30 Q300,0 600,20 Q900,40 1200,10 L1200,60 Z" fill="#050505"></path>
+  </svg>
+</div>
+
+</section><section style="width: 100%; max-width: 100%; box-sizing: border-box; position: relative; min-height: 100vh; overflow: hidden; direction: rtl; --zappy-bg-overlay: rgba(0, 0, 0, 0.22); --zappy-bg-image: url(&quot;assets/general-hero-upload-1778500102106.webp&quot;); background-repeat: no-repeat; --zappy-bg-color: #1C1C1A; background-image: url(&quot;assets/general-hero-upload-1778580677147-h8ugih.webp?v=1778580679707&quot;) !important; background-size: cover !important; background-position: 90% 0% !important;" id="lux-hero-dup-1778595316918" data-zappy-section="true" class="section" data-zappy-bg-color="#1C1C1A" data-zappy-bg-image="assets/general-hero-upload-1778500102106.webp" data-zappy-bg-overlay-color="#000000" data-zappy-bg-overlay-opacity="22" data-zappy-bg-video-type="" data-zappy-bg-video-url="" data-element-id="zappy-hero-bg-lux-hero" data-element-type="background-image" data-zappy-bg-position="90% 0%" data-zappy-bg-zoom="0.7" data-zappy-bg-type="image">
+<style>
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes floatUp {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes pulseGlow {
+    0%,100% { box-shadow: 0 0 20px rgba(201,168,76,0.2), 0 0 60px rgba(201,168,76,0.05); }
+    50% { box-shadow: 0 0 40px rgba(201,168,76,0.4), 0 0 100px rgba(201,168,76,0.15); }
+  }
+  @keyframes lineGrow {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes rotateGrid {
+    0% { transform: rotate(0deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1.2); }
+  }
+  @keyframes scanline {
+    0% { top: -10%; }
+    100% { top: 110%; }
+  }
+
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-bg-radial {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(ellipse 80% 70% at 30% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 50% at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 60%),
+                linear-gradient(180deg, #050505 0%, #0A0A0A 50%, #050505 100%);
+  }
+
+  .hero-scanline {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.15) 50%, transparent 100%);
+    z-index: 2;
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+  }
+
+  .hero-vertical-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, rgba(201,168,76,0.3) 30%, rgba(201,168,76,0.5) 50%, rgba(201,168,76,0.3) 70%, transparent 100%);
+    z-index: 2;
+    animation: floatUp 6s ease-in-out infinite;
+  }
+
+  .hero-content-wrap {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+    box-sizing: border-box;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+  }
+
+  .hero-eyebrow-line {
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--accent);
+    animation: lineGrow 1s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  .hero-eyebrow-text {
+    font-family: system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .hero-tags-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 0;
+    margin-top: 4px;
+  }
+
+  .hero-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent);
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 4px 12px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .hero-headline-block {
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.25s;
+    opacity: 0;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .hero-h1 {
+    font-family: system-ui, sans-serif;
+    font-size: clamp(32px, 5.5vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text-light);
+    margin: 0 0 8px 0;
+    letter-spacing: -1px;
+  }
+
+  .hero-h1 .accent-word {
+    background: var(--gradient-gold-shine);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+    display: inline;
+  }
+
+  .hero-h1-sub {
+    font-family: system-ui, sans-serif;
+    font-size: clamp(28px, 4.5vw, 60px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--text-light);
+    margin: 0;
+    letter-spacing: -1px;
+  }
+
+  .hero-divider-accent {
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    margin: 28px 0;
+    position: relative;
+  }
+  .hero-divider-accent::after {
+    content: '';
+    position: absolute;
+    right: 90px;
+    top: 0;
+    width: 20px;
+    height: 3px;
+    background: rgba(201,168,76,0.3);
+  }
+
+  .hero-body-text {
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+    margin-bottom: 48px;
+  }
+
+  .hero-paragraph {
+    font-family: system-ui, sans-serif;
+    font-size: clamp(15px, 1.8vw, 18px);
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin: 0 0 20px 0;
+    max-width: 680px;
+  }
+
+  .hero-notice {
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: inline-block;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .hero-cta-row {
+    animation: fadeSlideIn 0.8s ease forwards;
+    animation-delay: 0.55s;
+    opacity: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn-primary-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 36px;
+    background: var(--accent);
+    color: #050505;
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: var(--radius-btn);
+    transition: var(--transition-default);
+    animation: pulseGlow 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s ease;
+  }
+  .btn-primary-hero:hover::before {
+    left: 100%;
+  }
+  .btn-primary-hero:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.4);
+  }
+
+  .btn-secondary-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 32px;
+    background: transparent;
+    color: var(--text-light);
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(232,232,232,0.2);
+    border-radius: var(--radius-btn);
+    transition: var(--transition-default);
+    letter-spacing: 0.3px;
+  }
+  .btn-secondary-hero:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .hero-side-decoration {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 5;
+    opacity: 0.5;
+  }
+
+  .hero-side-num {
+    font-family: system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .hero-side-line-vert {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+  }
+
+  .hero-corner-accent {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(201,168,76,0.2);
+    z-index: 3;
+    pointer-events: none;
+  }
+  .hero-corner-accent.top-right {
+    top: 80px;
+    left: 60px;
+    border-bottom: none;
+    border-left: none;
+  }
+  .hero-corner-accent.bottom-left {
+    bottom: 60px;
+    right: 60px;
+    border-top: none;
+    border-right: none;
+  }
+
+  .hero-floating-badge {
+    position: absolute;
+    left: 80px;
+    bottom: 120px;
+    background: rgba(10,10,10,0.9);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 16px 20px;
+    border-radius: var(--radius-card);
+    z-index: 10;
+    animation: floatUp 5s ease-in-out infinite;
+    backdrop-filter: blur(10px);
+  }
+  .hero-floating-badge .badge-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    font-family: system-ui, sans-serif;
+  }
+  .hero-floating-badge .badge-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-top: 4px;
+    font-family: system-ui, sans-serif;
+  }
+
+  @media (max-width: 900px) {
+    .hero-side-decoration { display: none; }
+    .hero-corner-accent { display: none; }
+    .hero-floating-badge { display: none; }
+    .hero-vertical-line { display: none; }
+  }
+  @media (max-width: 768px) {
+    .hero-content-wrap {
+      padding-top: 110px;
+      padding-bottom: 60px;
+      align-items: flex-start;
+    }
+    .hero-paragraph { max-width: 100%; }
+    .hero-notice { max-width: 100%; }
+    .hero-cta-row { flex-direction: column; align-items: flex-start; }
+    .btn-primary-hero, .btn-secondary-hero { width: 100%; justify-content: center; }
+  }
+</style>
+
+<!-- Background layers -->
+<div class="hero-bg-grid"></div>
+<div class="hero-bg-radial"></div>
+<div class="hero-scanline"></div>
+
+<!-- Vertical decorative lines -->
+<div class="hero-vertical-line" style="right: 22%; animation-delay: 0s;"></div>
+<div class="hero-vertical-line" style="right: 65%; animation-delay: 2s; opacity: 0.4;"></div>
+
+<!-- Corner accents -->
+<div class="hero-corner-accent top-right"></div>
+<div class="hero-corner-accent bottom-left"></div>
+
+<!-- Side decoration -->
+<div class="hero-side-decoration">
+  <div class="hero-side-num">LEADS · SALES · GROWTH</div>
+  <div class="hero-side-line-vert"></div>
+</div>
+
+<!-- Floating badge -->
+<div class="hero-floating-badge">
+  <div class="badge-num">100%</div>
+  <div class="badge-label">תוצאות אמיתיות</div>
+</div>
+
+<!-- Main content -->
+<div class="hero-content-wrap">
+  <div class="hero-inner">
+
+    <div class="hero-eyebrow" >
+      <br>
+      <span class="hero-eyebrow-text" ><h1>המומחית לשיווק ומכירה</h1></span>
+    </div>
+
+    <div class="hero-headline-block">
+      <h1 class="hero-h1" ><font color="#ffffff">
+        אם את/ה בעל/ת עסק. יזם. נותן שירות.<br>
+        יש לך מוצר או שירות טוב —</font></h1>
+      
+      <div class="hero-divider-accent"></div>
+    </div>
+
+    <div class="hero-body-text">
+      <h3 ><b><font color="#ffffff">
+        נקפיץ לכם את כמות הלידים האיכותיים והמכירות תוך תקופה קצרה — בתהליך אמיתי של הכרת העסק שלכם, איבחון מדויק של נקודות החולשה במיתוג, שיווק, מכירה, ובניית מנגנון הגבייה המדויק. מחפשים יותר לידים... למכור יותר... לאורך זמן? — תראו את התוצאות כבר בחשבון הבנק.
+      </font></b></h3>
+      <div class="hero-notice" ><h2 >&nbsp;<font color="#1a1a1a"> </font><font color="#ffffff">אני מזמינה אותך לשיחת היכרות<br>בה נבחן יחד כיצד אני יכולה ל-לוות אותך להגשים את המטרות שלך&nbsp;&nbsp;</font></h2></div>
+    </div>
+
+    <div class="hero-cta-row" >
+      <a href="#contact" class="btn-primary-hero" data-element-type="button" data-element-id="btn-1778418124144-y39uaeql5" data-native-element="true">קבעו שיחת הערכה</a>
+      <a href="#about" class="btn-secondary-hero" data-element-type="button" data-element-id="btn-1778418124144-4bgxdgy4h" data-native-element="true">למי זה מתאים ←</a>
+    </div>
+
+    <div style="margin-top:40px;animation:fadeSlideIn 0.8s ease forwards;animation-delay:0.7s;opacity:0;">
+      <div class="hero-tags-strip" >
+        <span class="hero-tag">אבחון עסקי מדויק</span>
+        <span class="hero-tag">שיווק ממוקד</span>
+        <span class="hero-tag">מכירות שצומחות</span>
+        <span class="hero-tag">תוצאות בחשבון הבנק</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Bottom divider -->
+<div style="position:absolute;bottom:0;left:0;width:100%;height:60px;pointer-events:none;z-index:5;">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" style="display:block;width:100%;height:100%;">
+    <path d="M0,60 L0,30 Q300,0 600,20 Q900,40 1200,10 L1200,60 Z" fill="#050505"></path>
+  </svg>
+</div>
+
+</section><section class="index-pain-points-section" dir="rtl" data-layout-spec="בית-pain-points" id="index-pain-points-section">
   <div class="pain-points-container">
 
     <!-- Intro Block -->
@@ -1348,7 +2394,7 @@
           <span class="wq-badge-icon" style="color: rgb(245, 245, 245) !important;">✦</span>
           <span class="wq-badge-text" style="color: rgb(245, 245, 245) !important;">מומחית מוכחת</span>
         </div>
-        <div data-zappy-zoom-wrapper="true" data-element-id="img-1778166837700-w1gfcpaan" data-element-type="image" data-zappy-zoom-wrapper-width="402px" data-zappy-zoom-wrapper-height="302px" data-zappy-zoom-wrapper-width-mode="full" data-zappy-zoom-wrapper-align="center" style="position: absolute !important; overflow: hidden !important; width: 100% !important; max-width: none !important; margin-left: 0px !important; margin-right: 0px !important; height: 100% !important; display: block !important; top: 0px !important; left: 0px !important; z-index: 1 !important;" data-zappy-zoom-clip="true" data-zappy-wrapper-margins-applied="true"><img src="/assets/image-remove_background-1778663826815-nyjvdx.webp?v=1778663826815" alt="לקוחות ממתינים בתור לשירות עסקי מקצועי" class="wq-hero-main-img" data-placeholder="section-hero-queue-1" data-context="Elegant luxury waiting queue of professional business clients in a modern platinum and silver toned office lobby, sophisticated atmosphere, soft lighting, premium consulting environment" data-element-type="image" data-element-id="img-1778166837700-w1gfcpaan" style="border-radius: 8px; object-position: 50% 50% !important; object-fit: cover !important; width: 100% !important; height: 100% !important; max-width: none !important; display: block !important; margin: 0px !important; position: absolute !important; left: 0% !important; top: 0% !important; max-height: none !important" data-zappy-object-position="50% 50%" data-zappy-zoom="1"></div>
+        <div data-zappy-zoom-wrapper="true" data-element-id="img-1778166837700-w1gfcpaan" data-element-type="image" data-zappy-zoom-wrapper-width="402px" data-zappy-zoom-wrapper-height="302px" data-zappy-zoom-wrapper-width-mode="full" data-zappy-zoom-wrapper-align="center" style="position: absolute !important; overflow: hidden !important; width: 100% !important; max-width: none !important; margin-left: 0px !important; margin-right: 0px !important; height: 100% !important; display: block !important; top: 0px !important; left: 0px !important; z-index: 1 !important;" data-zappy-zoom-clip="true" data-zappy-wrapper-margins-applied="true"><img src="/assets/image-remove_background-1778420280600-1d3mlq.png?v=1778420280600" alt="לקוחות ממתינים בתור לשירות עסקי מקצועי" class="wq-hero-main-img" data-placeholder="section-hero-queue-1" data-context="Elegant luxury waiting queue of professional business clients in a modern platinum and silver toned office lobby, sophisticated atmosphere, soft lighting, premium consulting environment" data-element-type="image" data-element-id="img-1778166837700-w1gfcpaan" style="border-radius: 8px; object-position: 50% 50% !important; object-fit: cover !important; width: 100% !important; height: 100% !important; max-width: none !important; display: block !important; margin: 0px !important; position: absolute !important; left: 0% !important; top: 0% !important; max-height: none !important" data-zappy-object-position="50% 50%" data-zappy-zoom="1"></div>
         <div class="wq-image-glow" aria-hidden="true"></div>
         <!-- Floating stat card -->
         
@@ -1759,72 +2805,6 @@
   
 
 
-
-
-
-<section class="hero-split" aria-label="גיבורת הדף הראשי">
-  <div class="hero-split__container">
-
-    <!-- TEXT COLUMN (right side in RTL = visually right) -->
-    <div class="hero-split__text">
-      <span class="hero-split__eyebrow" aria-label="תחום התמחות">המומחית לשיווק ומכירה עיסקית</span>
-
-      <h1 class="hero-split__headline">
-        הגיע הזמן שהלקוחות<br>
-        <span class="hero-split__headline-accent">יחפשו אותך</span>
-      </h1>
-
-      <p class="hero-split__subtitle">
-        עם הכלים הנכונים, האסטרטגיה המדויקת והליווי המקצועי —<br class="hero-split__br-desktop">
-        נהפוך את העסק שלך למגנט ללקוחות איכותיים
-      </p>
-
-      <ul class="hero-split__features" aria-label="יתרונות שירות">
-        <li class="hero-split__feature-item">
-          <span class="hero-split__feature-icon" aria-hidden="true">✦</span>
-          <span>אבחון עסקי מעמיק</span>
-        </li>
-        <li class="hero-split__feature-item">
-          <span class="hero-split__feature-icon" aria-hidden="true">✦</span>
-          <span>מנגנון מכירות שעובד אוטומטית</span>
-        </li>
-        <li class="hero-split__feature-item">
-          <span class="hero-split__feature-icon" aria-hidden="true">✦</span>
-          <span>תוצאות מדידות תוך 90 יום</span>
-        </li>
-      </ul>
-
-      <a href="#contact" class="hero-split__cta" role="button" aria-label="קבעו שיחת היכרות חינם עכשיו">
-        קבעו שיחת היכרות חינם
-        <span class="hero-split__cta-arrow" aria-hidden="true">←</span>
-      </a>
-
-      <p class="hero-split__trust-note" aria-label="הערת אמון">ללא התחייבות · 100% חינם · מענה תוך 24 שעות</p>
-    </div>
-
-    <!-- IMAGE COLUMN (left side in RTL = visually left) -->
-    <div class="hero-split__image-col" aria-hidden="true">
-      <div class="hero-split__image-frame">
-        <div class="hero-split__image-glow"></div>
-        <img class="hero-split__portrait" src="/assets/image-remove_background-1778663826815-nyjvdx.webp" alt="המומחית לשיווק ומכירה עיסקית" data-placeholder="hero-portrait" data-context="Professional Israeli businesswoman consultant, confident pose, elegant dark luxury background, gold accent lighting, marketing expert portrait" loading="eager" fetchpriority="high">
-        <div class="hero-split__badge" aria-label="ניסיון מקצועי">
-          <span class="hero-split__badge-number">+10</span>
-          <span class="hero-split__badge-label">שנות ניסיון</span>
-        </div>
-        <div class="hero-split__badge hero-split__badge--bottom" aria-label="לקוחות מרוצים">
-          <span class="hero-split__badge-number">200+</span>
-          <span class="hero-split__badge-label">עסקים שגדלו</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Decorative background elements -->
-  <div class="hero-split__bg-orb hero-split__bg-orb--1" aria-hidden="true"></div>
-  <div class="hero-split__bg-orb hero-split__bg-orb--2" aria-hidden="true"></div>
-  <div class="hero-split__bg-line" aria-hidden="true"></div>
-</section>
 
 <footer class="site-footer" dir="rtl">
   <div class="footer-main">
