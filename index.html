@@ -2111,182 +2111,696 @@
 
 
 
-<section class="mech-methodology" dir="rtl" lang="he" aria-labelledby="mech-section-title">
-  <!-- Background decorative elements -->
-  <div class="mech-bg-decor mech-bg-decor--1" aria-hidden="true"></div>
-  <div class="mech-bg-decor mech-bg-decor--2" aria-hidden="true"></div>
+<section dir="rtl" style="position:relative;width:100%;max-width:100%;box-sizing:border-box;background:var(--bg-dark);overflow:hidden;padding:0;" data-zappy-section="true" class="section">
 
+<style>
+  .mech-section {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--bg-dark);
+    padding: var(--spacing-section) 0;
+    font-family: system-ui, sans-serif;
+  }
+
+  .mech-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .mech-gold-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-gold-shine);
+    z-index: 2;
+  }
+
+  .mech-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Header block */
+  .mech-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 80px;
+    position: relative;
+  }
+
+  .mech-header::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to left, var(--accent), transparent);
+  }
+
+  .mech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: var(--radius-badge);
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .mech-tag-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: mech-pulse 2s infinite;
+  }
+
+  @keyframes mech-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .mech-headline-block {
+    flex: 1;
+  }
+
+  .mech-h2 {
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--text-light);
+    margin: 0 0 8px 0;
+    letter-spacing: -1px;
+  }
+
+  .mech-h2 span {
+    background: var(--gradient-gold-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: mech-shine 4s linear infinite;
+  }
+
+  @keyframes mech-shine {
+    to { background-position: 200% center; }
+  }
+
+  .mech-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0;
+  }
+
+  /* MAIN LAYOUT: diagonal split grid */
+  .mech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+
+  /* Phase cards */
+  .mech-phase {
+    position: relative;
+    background: #0f0f0f;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition: var(--transition-default);
+    cursor: default;
+  }
+
+  .mech-phase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-gold-shine);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+  }
+
+  .mech-phase:hover::before {
+    transform: scaleX(1);
+  }
+
+  .mech-phase:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201,168,76,0.4);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.1);
+  }
+
+  .mech-phase-inner {
+    padding: 36px 32px;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .mech-phase-num {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(201,168,76,0.06);
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    font-variant-numeric: tabular-nums;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .mech-phase-quarter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 2px;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.7);
+    margin-bottom: 20px;
+  }
+
+  .mech-phase-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: var(--transition-default);
+  }
+
+  .mech-phase:hover .mech-phase-icon {
+    background: rgba(201,168,76,0.15);
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  .mech-phase-icon svg {
+    width: 22px;
+    height: 22px;
+    color: var(--accent);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  .mech-phase-h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-light);
+    margin: 0 0 14px 0;
+    line-height: 1.3;
+  }
+
+  .mech-phase-p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin: 0 0 20px 0;
+  }
+
+  /* Tags row inside card */
+  .mech-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  .mech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 2px;
+    font-size: 12px;
+    color: var(--text-muted);
+    transition: var(--transition-hover);
+  }
+
+  .mech-pill::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.6;
+  }
+
+  .mech-phase:hover .mech-pill {
+    border-color: rgba(201,168,76,0.25);
+    color: var(--text-dark);
+  }
+
+  /* Measurement card - full width */
+  .mech-measure-card {
+    position: relative;
+    background: linear-gradient(135deg, #111 0%, #0d0d0d 100%);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+
+  .mech-measure-inner {
+    padding: 48px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .mech-measure-left h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-light);
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+  }
+
+  .mech-measure-left p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .mech-measure-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .mech-metric-box {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-default);
+  }
+
+  .mech-metric-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mech-metric-box:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-2px);
+  }
+
+  .mech-metric-box:hover::after {
+    opacity: 1;
+  }
+
+  .mech-metric-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .mech-metric-value {
+    font-size: 13px;
+    color: var(--text-dark);
+    line-height: 1.5;
+  }
+
+  /* Bottom CTA strip */
+  .mech-cta-strip {
+    position: relative;
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: var(--radius-card);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    overflow: hidden;
+  }
+
+  .mech-cta-strip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .mech-cta-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-light);
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  .mech-cta-badge {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .mech-cta-badge-num {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .mech-cta-badge-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* Bullet list in card */
+  .mech-bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mech-bullet-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .mech-bullet-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.4);
+    background: rgba(201,168,76,0.08);
+    margin-top: 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Divider accent */
+  .mech-divider-line {
+    width: 60px;
+    height: 2px;
+    background: var(--gradient-gold-shine);
+    margin: 16px 0 24px 0;
+  }
+
+  /* Connector arrows between phases */
+  .mech-phases-wrapper {
+    position: relative;
+  }
+
+  .mech-phases-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 33.33%;
+    left: 33.33%;
+    height: 1px;
+    background: rgba(201,168,76,0.15);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  @media (max-width: 1024px) {
+    .mech-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .mech-measure-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .mech-phases-wrapper::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mech-section {
+      padding-top: 100px;
+    }
+    .mech-container {
+      padding: 0 20px;
+    }
+    .mech-grid {
+      grid-template-columns: 1fr;
+    }
+    .mech-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .mech-measure-inner {
+      padding: 32px 24px;
+    }
+    .mech-measure-metrics {
+      grid-template-columns: 1fr;
+    }
+    .mech-cta-strip {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 28px 24px;
+    }
+    .mech-h2 {
+      font-size: 32px;
+    }
+    .mech-phase-inner {
+      padding: 28px 24px;
+    }
+  }
+</style>
+
+<div class="mech-noise"></div>
+<div class="mech-gold-line"></div>
+
+<div class="mech-section">
   <div class="mech-container">
 
-    <!-- Section Header -->
-    <header class="mech-header">
-      <div class="mech-header__badge" aria-hidden="true">
-        <span class="mech-header__badge-icon">⚙</span>
-        <span>המתודולוגיה שלנו</span>
-      </div>
-      <h2 class="mech-header__title" id="mech-section-title">
-        איך זה עובד —<br>
-        <span class="mech-header__title--gold">המנגנון שלנו בפעולה</span>
-      </h2>
-      <div class="mech-header__divider" aria-hidden="true"></div>
-    </header>
-
-    <!-- Intro Block -->
-    <div class="mech-intro" role="note">
-      <div class="mech-intro__icon" aria-hidden="true">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"></path>
-        </svg>
-      </div>
-      <p class="mech-intro__text">
-        אנחנו נשאל את <strong>השאלות הקשות</strong> ונלמד כיצד העסק שלכם באמת עובד — ונבנה <strong>מנגנון יעיל</strong>.
-      </p>
-    </div>
-
-    <!-- 3 Pillars Grid -->
-    <div class="mech-pillars" role="list">
-
-      <!-- Pillar 1 -->
-      <article class="mech-card" role="listitem" aria-labelledby="mech-card-1-title">
-        <div class="mech-card__number" aria-hidden="true">01</div>
-        <div class="mech-card__icon-wrap" aria-hidden="true">
-          <svg class="mech-card__icon" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="url(#gold-grad-1)"></path>
-            <defs>
-              <linearGradient id="gold-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#C9A84C"></stop>
-                <stop offset="100%" stop-color="#8B6914"></stop>
-              </linearGradient>
-            </defs>
-          </svg>
+    <!-- Header -->
+    <div class="mech-header">
+      <div class="mech-headline-block">
+        <div class="mech-tag">
+          <span class="mech-tag-dot"></span>
+          המתודולוגיה שלנו
         </div>
-        <div class="mech-card__content">
-          <h3 class="mech-card__title" id="mech-card-1-title">תקציב שיווק ומכירות</h3>
-          <div class="mech-card__divider" aria-hidden="true"></div>
-          <p class="mech-card__text">
-            ניצור תקציב קבוע לשיווק ותקציב נכון למכירה, ונבצע את ההפרדה המדויקת בין שניהם. נאזן את ההוצאות ונשפר וייעל באופן מתמיד את ערוצי השיווק והמכירה שלכם — ונבחר את הנכונים עבורכם.
-          </p>
-          <ul class="mech-card__tags" aria-label="נושאי משנה">
-            <li class="mech-card__tag">הפרדת תקציבים</li>
-            <li class="mech-card__tag">איזון הוצאות</li>
-            <li class="mech-card__tag">בחירת ערוצים</li>
-          </ul>
-        </div>
-        <div class="mech-card__glow" aria-hidden="true"></div>
-      </article>
-
-      <!-- Pillar 2 -->
-      <article class="mech-card mech-card--featured" role="listitem" aria-labelledby="mech-card-2-title">
-        <div class="mech-card__featured-label" aria-label="שלב מרכזי">מרכזי</div>
-        <div class="mech-card__number" aria-hidden="true">02</div>
-        <div class="mech-card__icon-wrap" aria-hidden="true">
-          <svg class="mech-card__icon" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z" fill="url(#gold-grad-2)"></path>
-            <defs>
-              <linearGradient id="gold-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#C9A84C"></stop>
-                <stop offset="100%" stop-color="#8B6914"></stop>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div class="mech-card__content">
-          <h3 class="mech-card__title" id="mech-card-2-title">מנגנון מדידה מסודר</h3>
-          <div class="mech-card__divider" aria-hidden="true"></div>
-          <p class="mech-card__text">
-            נבנה מנגנון עוקב מסודר למדידת תוצאות עם דגש על מדידה קבועה:
-          </p>
-          <div class="mech-timeline" role="list" aria-label="שלבי מדידה">
-            <div class="mech-timeline__item" role="listitem">
-              <div class="mech-timeline__marker" aria-hidden="true">
-                <span class="mech-timeline__marker-inner"></span>
-              </div>
-              <div class="mech-timeline__body">
-                <span class="mech-timeline__label">הרבעון הראשון</span>
-                <span class="mech-timeline__sub">3 חודשים ראשונים</span>
-                <p class="mech-timeline__desc">מדידה שוטפת ובניית בסיס נתונים</p>
-              </div>
-            </div>
-            <div class="mech-timeline__connector" aria-hidden="true"></div>
-            <div class="mech-timeline__item" role="listitem">
-              <div class="mech-timeline__marker" aria-hidden="true">
-                <span class="mech-timeline__marker-inner"></span>
-              </div>
-              <div class="mech-timeline__body">
-                <span class="mech-timeline__label">הרבעון השני</span>
-                <p class="mech-timeline__desc">מדידה של העלייה בלידים, איכות הלידים, והמרת הלידים</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mech-card__glow mech-card__glow--featured" aria-hidden="true"></div>
-      </article>
-
-      <!-- Pillar 3 -->
-      <article class="mech-card" role="listitem" aria-labelledby="mech-card-3-title">
-        <div class="mech-card__number" aria-hidden="true">03</div>
-        <div class="mech-card__icon-wrap" aria-hidden="true">
-          <svg class="mech-card__icon" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" fill="url(#gold-grad-3)"></path>
-            <defs>
-              <linearGradient id="gold-grad-3" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#C9A84C"></stop>
-                <stop offset="100%" stop-color="#8B6914"></stop>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div class="mech-card__content">
-          <h3 class="mech-card__title" id="mech-card-3-title">מדידת כדאיות</h3>
-          <div class="mech-card__divider" aria-hidden="true"></div>
-          <p class="mech-card__text">
-            נעקוב בצורה מדויקת אחר העלייה הקבועה במכירות ומדידה של הוצאות מול הכנסות — כדאיות השיווק בערוצים שנבחרו.
-          </p>
-          <div class="mech-stats" role="list" aria-label="מדדי מעקב">
-            <div class="mech-stats__item" role="listitem">
-              <span class="mech-stats__icon" aria-hidden="true">📈</span>
-              <span class="mech-stats__label">עלייה במכירות</span>
-            </div>
-            <div class="mech-stats__item" role="listitem">
-              <span class="mech-stats__icon" aria-hidden="true">⚖️</span>
-              <span class="mech-stats__label">הוצאות מול הכנסות</span>
-            </div>
-            <div class="mech-stats__item" role="listitem">
-              <span class="mech-stats__icon" aria-hidden="true">🎯</span>
-              <span class="mech-stats__label">כדאיות ערוצי שיווק</span>
-            </div>
-          </div>
-        </div>
-        <div class="mech-card__glow" aria-hidden="true"></div>
-      </article>
-
-    </div><!-- /pillars -->
-
-    <!-- Closing CTA Block -->
-    <div class="mech-cta" role="complementary" aria-label="קריאה לפעולה">
-      <div class="mech-cta__inner">
-        <div class="mech-cta__icon-wrap" aria-hidden="true">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.28L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5v-5l-2.28 2.28C7.81 18 6 15.21 6 12c0-4.08 3.05-7.44 7-7.93V2.05z" fill="url(#gold-grad-cta)"></path>
-            <defs>
-              <linearGradient id="gold-grad-cta" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#C9A84C"></stop>
-                <stop offset="100%" stop-color="#8B6914"></stop>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <blockquote class="mech-cta__quote">
-          <p class="mech-cta__text">
-            במידה ואתם רוצים <strong class="mech-cta__highlight">להתרומם ולייצר הכנסה אמיתית</strong> תוך שבירת תיקרת הזכוכית —
-            <strong class="mech-cta__highlight">חבל לבזבז זמן בפעולות בזבזניות.</strong>
-          </p>
-        </blockquote>
-        <div class="mech-cta__line" aria-hidden="true"></div>
+        <h2 class="mech-h2">
+          איך זה עובד —<br>
+          <span>המנגנון שלנו בפעולה</span>
+        </h2>
+        <div class="mech-divider-line"></div>
+        <p class="mech-intro">אנחנו נשאל את השאלות הקשות ונלמד כיצד העסק שלכם באמת עובד — ונבנה מנגנון יעיל.</p>
       </div>
     </div>
 
-  </div><!-- /container -->
+    <!-- 3-column phase grid -->
+    <div class="mech-phases-wrapper">
+      <div class="mech-grid">
+
+        <!-- Phase 1: Budget -->
+        <div class="mech-phase">
+          <div class="mech-phase-num">01</div>
+          <div class="mech-phase-inner">
+            <div class="mech-phase-quarter">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              הרבעון הראשון · 3 חודשים ראשונים
+            </div>
+            <div class="mech-phase-icon">
+              <!-- Icon 1: budget/wallet -->
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <h3 class="mech-phase-h3">תקציב שיווק ומכירות</h3>
+            <p class="mech-phase-p">ניצור תקציב קבוע לשיווק ותקציב נכון למכירה, ונבצע את ההפרדה המדויקת בין שניהם. נאזן את ההוצאות ונשפר וייעל באופן מתמיד את ערוצי השיווק והמכירה שלכם — ונבחר את הנכונים עבורכם.</p>
+            <div class="mech-tags-row">
+              <span class="mech-pill">הפרדת תקציבים</span>
+              <span class="mech-pill">איזון הוצאות</span>
+              <span class="mech-pill">בחירת ערוצים</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 2: Measurement -->
+        <div class="mech-phase">
+          <div class="mech-phase-num">02</div>
+          <div class="mech-phase-inner">
+            <div class="mech-phase-quarter">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              מרכזי
+            </div>
+            <div class="mech-phase-icon">
+              <!-- Icon 2: chart/measurement -->
+              <svg viewBox="0 0 24 24">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="mech-phase-h3">מנגנון מדידה מסודר</h3>
+            <p class="mech-phase-p">נבנה מנגנון עוקב מסודר למדידת תוצאות עם דגש על מדידה קבועה:</p>
+            <ul class="mech-bullet-list">
+              <li>מדידה שוטפת ובניית בסיס נתונים</li>
+              <li>מדידה של העלייה בלידים, איכות הלידים, והמרת הלידים</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Phase 3: ROI -->
+        <div class="mech-phase">
+          <div class="mech-phase-num">03</div>
+          <div class="mech-phase-inner">
+            <div class="mech-phase-quarter">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+              הרבעון השני · עלייה במכירות
+            </div>
+            <div class="mech-phase-icon">
+              <!-- Icon 3: roi/scales -->
+              <svg viewBox="0 0 24 24">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3 class="mech-phase-h3">מדידת כדאיות</h3>
+            <p class="mech-phase-p">נעקוב בצורה מדויקת אחר העלייה הקבועה במכירות ומדידה של הוצאות מול הכנסות — כדאיות השיווק בערוצים שנבחרו.</p>
+            <div class="mech-tags-row">
+              <span class="mech-pill">הוצאות מול הכנסות</span>
+              <span class="mech-pill">כדאיות ערוצי שיווק</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Full-width measure card -->
+    <div class="mech-measure-card" style="margin-top:2px;">
+      <div class="mech-measure-inner">
+        <div class="mech-measure-left">
+          <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;">
+            <!-- Icon 4: target -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle>
+            </svg>
+            <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);">מדידה ומעקב</span>
+          </div>
+          <h3>מנגנון מדידה מסודר</h3>
+          <div class="mech-divider-line"></div>
+          <p>נבנה מנגנון עוקב מסודר למדידת תוצאות עם דגש על מדידה קבועה — לידים, איכות, המרה, ועלייה מתמדת במכירות.</p>
+        </div>
+        <div class="mech-measure-metrics">
+          <div class="mech-metric-box">
+            <div class="mech-metric-label">מדידה שוטפת</div>
+            <div class="mech-metric-value">בניית בסיס נתונים מתמשך</div>
+          </div>
+          <div class="mech-metric-box">
+            <div class="mech-metric-label">לידים</div>
+            <div class="mech-metric-value">עלייה, איכות, והמרה</div>
+          </div>
+          <div class="mech-metric-box">
+            <div class="mech-metric-label">הוצאות מול הכנסות</div>
+            <div class="mech-metric-value">כדאיות ערוצי השיווק</div>
+          </div>
+          <div class="mech-metric-box">
+            <div class="mech-metric-label">מכירות</div>
+            <div class="mech-metric-value">עלייה קבועה ומדודה</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Strip -->
+    <div class="mech-cta-strip" style="margin-top:24px;">
+      <div style="display:flex;align-items:center;gap:16px;flex-shrink:0;">
+        <!-- Icon 5: warning/exclamation -->
+        <div style="width:52px;height:52px;border-radius:50%;border:2px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+      </div>
+      <div class="mech-cta-text">
+        במידה ואתם רוצים להתרומם ולייצר הכנסה אמיתית תוך שבירת תיקרת הזכוכית —
+        חבל לבזבז זמן בפעולות בזבזניות.
+      </div>
+      <div class="mech-cta-badge">
+        <span class="mech-cta-badge-num">3</span>
+        <span class="mech-cta-badge-label">חודשים ראשונים</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </section>
 
 
