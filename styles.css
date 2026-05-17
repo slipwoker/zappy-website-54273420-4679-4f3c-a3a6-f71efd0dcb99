@@ -10576,6 +10576,50 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', sans-serif; font-wei
     padding: 14px 20px;
   }
 }
+
+@media (max-width: 900px) {
+#lux-hero .hero-sbs-wrap {
+  padding: 100px 20px 60px !important;
+  overflow: hidden !important;
+}
+
+#lux-hero .hero-sbs-inner {
+  grid-template-columns: 1fr !important;
+  gap: 32px !important;
+  width: 100% !important;
+}
+
+#lux-hero .hero-sbs-image {
+  width: 100% !important;
+  max-width: 100% !important;
+  order: -1 !important;
+}
+
+#lux-hero .hero-sbs-image-frame {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+#lux-hero .hero-sbs-image-frame img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 380px !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0 !important;
+}
+
+#lux-hero [data-element-id="img-1778769829951-fn60l617q"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
