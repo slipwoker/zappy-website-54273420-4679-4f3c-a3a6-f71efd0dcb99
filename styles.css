@@ -10620,6 +10620,42 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', sans-serif; font-wei
   display: block !important;
 }
 }
+
+@media (max-width: 768px) {
+#lux-hero .hero-sbs-image-frame > div[data-zappy-zoom-wrapper="true"] {
+  width: 100% !important;
+  height: 380px !important;
+  max-width: 100% !important;
+}
+
+#lux-hero .hero-sbs-image-frame > div[data-zappy-zoom-wrapper="true"] img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+#lux-hero .hero-sbs-image-frame {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 380px !important;
+  overflow: hidden !important;
+}
+
+#lux-hero .hero-sbs-image {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#lux-hero .hero-sbs-wrap {
+  padding-top: 80px !important;
+}
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
