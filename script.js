@@ -2227,11 +2227,11 @@ window.onload = function() {
 /* END ZAPPY_PUBLISHED_LIGHTBOX_RUNTIME */
 
 
-/* ZAPPY_PUBLISHED_ZOOM_WRAPPER_RUNTIME */
+/* ZAPPY_PUBLISHED_ZOOM_WRAPPER_RUNTIME_V2 */
 (function(){
   try {
-    if (window.__zappyPublishedZoomInit) return;
-    window.__zappyPublishedZoomInit = true;
+    if (window.__zappyPublishedZoomInitV2) return;
+    window.__zappyPublishedZoomInitV2 = true;
 
     function isHeroBgWrapper(wrapper) {
       var img = wrapper.querySelector('img');
@@ -2261,6 +2261,22 @@ window.onload = function() {
         return { w: 100, h: 100 };
       if (imgA >= contA) return { w: (imgA / contA) * 100, h: 100 };
       return { w: 100, h: (contA / imgA) * 100 };
+    }
+
+    function normalizeInsertedZoomParent(wrapper) {
+      try {
+        var parent = wrapper && wrapper.parentElement;
+        if (!parent) return;
+        var parentClass = (parent.className || '').toString();
+        var isInserted = / zappy-inserted-element |^zappy-inserted-element | zappy-inserted-element$|^zappy-inserted-element$/.test(' ' + parentClass + ' ');
+        if (!isInserted) return;
+        parent.style.setProperty('width', '100%', 'important');
+        parent.style.setProperty('max-width', '100%', 'important');
+        parent.style.setProperty('height', 'auto', 'important');
+        parent.style.setProperty('min-height', '0', 'important');
+        parent.style.setProperty('max-height', 'none', 'important');
+        parent.setAttribute('data-zappy-inserted-zoom-parent-normalized', '1');
+      } catch (_e) {}
     }
 
     // FULL-BLEED FIRST-CHILD MEDIA: when the wrapper's parent (the image-wrap)
@@ -2521,6 +2537,7 @@ window.onload = function() {
       var widthMode = wrapper.getAttribute('data-zappy-zoom-wrapper-width-mode');
       if (widthMode === 'full') return;
       if (isHeroBgWrapper(wrapper)) return;
+      normalizeInsertedZoomParent(wrapper);
 
       var isMobile = window.innerWidth <= 768;
       if (isMobile) {
