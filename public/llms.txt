@@ -26,6 +26,26 @@ https://shirazadik.co.il/mystery-shopper
 https://shirazadik.co.il/contact
 מוכן לבנות עסק על יסודות אמיתיים? צור קשר עוד היום עם יועץ עסקי מוביל ותקבל אסטרטגיה מותאמת שתוביל אותך לצמיחה מהירה ומדידה.
 
+### ידע ומאמרים
+https://shirazadik.co.il/blog
+המומחית לשיווק ומכירה עיסקית יעילה - ידע ומאמרים
+
+### צמיחה
+https://shirazadik.co.il/blog/business-demand-no-growth
+מאמר שמסביר מדוע ביקוש לבדו לא מייצר צמיחה, ואיך לזהות את החסמים המבניים בשיווק, במכירה ובניהול.
+
+### מכירה
+https://shirazadik.co.il/blog/consistent-sales-process
+מדריך לבניית תהליך מכירה מסודר שמקטין תלות באלתור, משפר אחוזי סגירה ויוצר יציבות עסקית.
+
+### שיווק
+https://shirazadik.co.il/blog/marketing-busy-not-effective
+מאמר שעוזר לזהות מתי יש הרבה פעילות שיווקית אבל מעט תוצאה, ומה צריך לשנות כדי להפוך מאמץ להשפעה.
+
+### מדדים
+https://shirazadik.co.il/blog/business-metrics-better-decisions
+סקירה של המדדים החשובים באמת לניהול עסק: שיווק, מכירה, רווחיות וביצוע, כדי לקבל החלטות מדויקות יותר.
+
 ## Legal & Policy
 
 ### Privacy Policy
@@ -58,8 +78,8 @@ Information about WCAG compliance and accessibility features.
   - `full_name` (text, required)
   - `email` (email, required)
   - `phone` (tel)
-  - `message` (textarea)
-  - `privacy_consent` (checkbox)
+  - `message` (textarea, required)
+  - `privacy_consent` (checkbox, required)
 
 ---
 
