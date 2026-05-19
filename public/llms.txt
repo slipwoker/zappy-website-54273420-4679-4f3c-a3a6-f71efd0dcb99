@@ -30,10 +30,6 @@ https://shirazadik.co.il/contact
 https://shirazadik.co.il/blog
 המומחית לשיווק ומכירה עיסקית יעילה - ידע ומאמרים
 
-### צמיחה
-https://shirazadik.co.il/blog/business-demand-no-growth
-מאמר שמסביר מדוע ביקוש לבדו לא מייצר צמיחה, ואיך לזהות את החסמים המבניים בשיווק, במכירה ובניהול.
-
 ### מכירה
 https://shirazadik.co.il/blog/consistent-sales-process
 מדריך לבניית תהליך מכירה מסודר שמקטין תלות באלתור, משפר אחוזי סגירה ויוצר יציבות עסקית.
@@ -78,7 +74,7 @@ Information about WCAG compliance and accessibility features.
   - `full_name` (text, required)
   - `email` (email, required)
   - `phone` (tel)
-  - `message` (textarea, required)
+  - `message` (textarea)
   - `privacy_consent` (checkbox, required)
 
 ---
