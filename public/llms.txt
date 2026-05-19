@@ -18,13 +18,13 @@ https://shirazadik.co.il/about
 https://shirazadik.co.il/services
 גלה שירותי ייעוץ עסקי מתקדמים שנבנו כמו אדריכלות מדויקת. מאסטרטגיית מכירות ועד ניהול משאבי אנוש — כל פתרון מותאם אישית לעסק שלך.
 
-### הצעד הראשון לעסק שאתה חולם עליו — המומחית לשיווק ומכירה עיסקית יעילה
-https://shirazadik.co.il/contact
-מוכן לבנות עסק על יסודות אמיתיים? צור קשר עוד היום עם יועץ עסקי מוביל ותקבל אסטרטגיה מותאמת שתוביל אותך לצמיחה מהירה ומדידה.
-
 ### שירות לקוח סמוי לעסקים
 https://shirazadik.co.il/mystery-shopper
 המומחית לשיווק ומכירה עיסקית יעילה - שירות לקוח סמוי לעסקים
+
+### הצעד הראשון לעסק שאתה חולם עליו — המומחית לשיווק ומכירה עיסקית יעילה
+https://shirazadik.co.il/contact
+מוכן לבנות עסק על יסודות אמיתיים? צור קשר עוד היום עם יועץ עסקי מוביל ותקבל אסטרטגיה מותאמת שתוביל אותך לצמיחה מהירה ומדידה.
 
 ## Legal & Policy
 
@@ -58,8 +58,8 @@ Information about WCAG compliance and accessibility features.
   - `full_name` (text, required)
   - `email` (email, required)
   - `phone` (tel)
-  - `message` (textarea, required)
-  - `privacy_consent` (checkbox, required)
+  - `message` (textarea)
+  - `privacy_consent` (checkbox)
 
 ---
 
