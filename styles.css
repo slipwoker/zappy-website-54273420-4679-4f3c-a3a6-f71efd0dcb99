@@ -10931,6 +10931,22 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', sans-serif; font-wei
     font-size: 0.93rem;
   }
 }
+
+.home-section-0-section .s0-main-grid {
+  grid-template-columns: 420px 1fr !important;
+}
+
+@media (max-width: 1024px) {
+.home-section-0-section .s0-main-grid {
+  grid-template-columns: 340px 1fr !important;
+}
+}
+
+@media (max-width: 768px) {
+.home-section-0-section .s0-main-grid {
+  grid-template-columns: 1fr !important;
+}
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
